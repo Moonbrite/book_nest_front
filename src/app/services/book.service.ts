@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import { Book } from '../models/book.model';
 
@@ -29,5 +29,18 @@ export class BookService {
 
   DeleteBook(id: number): Observable<Book> {
     return this.http.delete<Book>(`${this.urlBook}/${id}`);
+  }
+
+  SearchBook(title?: string, author?: string): Observable<any> {
+    let params = new HttpParams();
+
+    if (title) {
+      params = params.set('title', title);
+    }
+    if (author) {
+      params = params.set('author', author);
+    }
+
+    return this.http.get(`${this.urlBook}/search`, { params });
   }
 }
