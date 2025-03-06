@@ -19,13 +19,13 @@ export class UserService {
 
   }
 
-  apiUrl: string = environnement.authUrl+"users"
+  //apiUrl: string = "http://195.15.204.108/api/register"
   apiAuth:string =environnement.authUrl
 
 
   // Create a user with api
   registerUser(user: User | undefined): Observable<User>{
-    return this.httpClient.post<User>(environnement.apiUrl + "register" , user).pipe(
+    return this.httpClient.post<User>("http://195.15.204.108/api/register", user).pipe(
       retry(1),
       catchError(this.handleError)
     )
@@ -33,7 +33,7 @@ export class UserService {
 
   // Login a user with api
   loginUser(authRequest: AuthRequest): Observable<AuthResponse> {
-    return this.httpClient.post<AuthResponse>(this.apiAuth, authRequest).pipe(
+    return this.httpClient.post<AuthResponse>("http://195.15.204.108/api/login", authRequest).pipe(
       retry(1),
       catchError(this.handleLoginError)
     );
