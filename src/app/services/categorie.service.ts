@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
-import { Book } from '../models/book.model';
+import { Category } from '../models/category.model';
 
 @Injectable({
     providedIn: 'root'
@@ -11,23 +11,23 @@ import { Book } from '../models/book.model';
   
     urlCategorie = "http://localhost:8081/api/categories";
     
-    GetAllCategories(): Observable<Book[]> {
-      return this.http.get<Book[]>(`${this.urlCategorie}`);
+    GetAllCategories(): Observable<Category[]> {
+      return this.http.get<Category[]>(`${this.urlCategorie}`);
     }
     
-    GetOneCategorie(id: number): Observable<Book> {
-      return this.http.get<Book>(`${this.urlCategorie}/${id}`);
+    GetOneCategorie(id: number): Observable<Category> {
+      return this.http.get<Category>(`${this.urlCategorie}/${id}`);
     }
 
-    PostNewCategorie(categorie: FormData): Observable<Book> {
-      return this.http.post<Book>(`${this.urlCategorie}`, categorie);
+    PostNewCategorie(categorie: FormData): Observable<Category> {
+      return this.http.post<Category>(`${this.urlCategorie}`, categorie);
     }
 
-    PutCategorie(id: number, categorie: FormData): Observable<Book> {
-      return this.http.put<Book>(`${this.urlCategorie}/${id}`, categorie);
+    PutCategorie(id: number, categorie: FormData): Observable<Category> {
+      return this.http.put<Category>(`${this.urlCategorie}/${id}`, categorie);
     }
 
-    DeleteCategorie(id: number): Observable<Book> {
-      return this.http.delete<Book>(`${this.urlCategorie}/${id}`);
+    DeleteCategorie(id: number): Observable<Category> {
+      return this.http.delete<Category>(`${this.urlCategorie}/${id}`);
     }
   }
