@@ -1,26 +1,50 @@
-<form [formGroup]="empruntForm" (ngSubmit)="addEmprunt()">
-  <label for="user_id">User ID:</label>
-  <input id="user_id" type="number" formControlName="user_id" required />
+<div class="emprunt-container">
+  <!-- Formulaire d'Emprunt -->
+  <form [formGroup]="empruntForm" (ngSubmit)="addEmprunt()" class="emprunt-form">
+    <h2>Ajouter un Emprunt</h2>
 
-  <label for="livre_id">Livre ID:</label>
-  <input id="livre_id" type="number" formControlName="livre_id" required />
+    <div class="form-group">
+      <label for="userId">User ID:</label>
+      <input id="userId" type="number" formControlName="userId" required />
+    </div>
 
-  <label for="date_emprunt">Date Emprunt:</label>
-  <input
-    id="date_emprunt"
-    type="date"
-    formControlName="date_emprunt"
-    required
-  />
+    <div class="form-group">
+      <label for="livre_id">Livre ID:</label>
+      <input id="livre_id" type="number" formControlName="livre_id" required />
+    </div>
 
-  <label for="date_retour">Date Retour:</label>
-  <input id="date_retour" type="date" formControlName="date_retour" required />
+    <div class="form-group">
+      <label for="date_emprunt">Date Emprunt:</label>
+      <input id="date_emprunt" type="date" formControlName="date_emprunt" required />
+    </div>
 
-  <label for="statut">Statut:</label>
-  <select id="statut" formControlName="statut">
-    <option value="dispo">Disponible</option>
-    <option value="emprunté">Emprunté</option>
-  </select>
+    <div class="form-group">
+      <label for="date_retour">Date Retour:</label>
+      <input id="date_retour" type="date" formControlName="date_retour" required />
+    </div>
 
-  <button type="submit">Envoyer</button>
-</form>
+    <div class="form-group">
+      <label for="statut">Statut:</label>
+      <select id="statut" formControlName="statut">
+        <option value="dispo">Disponible</option>
+        <option value="emprunté">Emprunté</option>
+      </select>
+    </div>
+
+    <button type="submit" class="submit-button">Envoyer</button>
+  </form>
+
+  <!-- Liste des derniers emprunts -->
+  <div class="last-emprunts">
+    <h3>Derniers Emprunts</h3>
+    <ul>
+      <li *ngFor="let emprunt of derniersEmprunts">
+        <p><strong>Utilisateur ID:</strong> {{ emprunt.userId }}</p>
+        <p><strong>Livre ID:</strong> {{ emprunt.livre_id }}</p>
+        <p><strong>Date Emprunt:</strong> {{ emprunt.date_emprunt | date }}</p>
+        <p><strong>Date Retour:</strong> {{ emprunt.date_retour | date }}</p>
+        <p><strong>Statut:</strong> {{ emprunt.statut }}</p>
+      </li>
+    </ul>
+  </div>
+</div>

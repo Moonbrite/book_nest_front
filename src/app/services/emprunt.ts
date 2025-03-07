@@ -25,8 +25,15 @@ export class EmpruntService {
 
   // Create a Emprunt with api
   addEmprunt(Emprunt: Emprunt | undefined): Observable<Emprunt>{
-    return this.httpClient.post<Emprunt>("http://195.15.204.108/api/emprunts", Emprunt).pipe(
+    return this.httpClient.post<Emprunt>("http://195.15.236.51/api/emprunts", Emprunt).pipe(
       retry(1),
     )
   }
+
+  getAll(): Observable<Emprunt[]> {
+    return this.httpClient.get<Emprunt[]>("http://195.15.236.51/api/emprunts").pipe(
+      retry(1),
+    )
+  }
+
 }

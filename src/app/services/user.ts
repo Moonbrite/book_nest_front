@@ -46,6 +46,7 @@ export class UserService {
     window.location.reload()
   }
 
+
   // Using to display if an error (all method)
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
