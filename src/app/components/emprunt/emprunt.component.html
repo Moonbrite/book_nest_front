@@ -1,0 +1,26 @@
+<form [formGroup]="empruntForm" (ngSubmit)="addEmprunt()">
+  <label for="user_id">User ID:</label>
+  <input id="user_id" type="number" formControlName="user_id" required />
+
+  <label for="livre_id">Livre ID:</label>
+  <input id="livre_id" type="number" formControlName="livre_id" required />
+
+  <label for="date_emprunt">Date Emprunt:</label>
+  <input
+    id="date_emprunt"
+    type="date"
+    formControlName="date_emprunt"
+    required
+  />
+
+  <label for="date_retour">Date Retour:</label>
+  <input id="date_retour" type="date" formControlName="date_retour" required />
+
+  <label for="statut">Statut:</label>
+  <select id="statut" formControlName="statut">
+    <option value="dispo">Disponible</option>
+    <option value="emprunté">Emprunté</option>
+  </select>
+
+  <button type="submit">Envoyer</button>
+</form>
