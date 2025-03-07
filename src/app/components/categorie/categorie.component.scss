@@ -1,0 +1,32 @@
+.container {
+  max-width: 900px;
+  margin: auto;
+}
+
+h2 {
+  font-weight: bold;
+}
+
+.table {
+  border-radius: 8px;
+  overflow: hidden;
+
+  thead {
+    background-color: #007bff; // Bleu principal
+    color: white;
+  }
+
+  tbody tr {
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+      cursor: pointer;
+      background-color: rgba(0, 123, 255, 0.1);
+    }
+  }
+}
+
+.btn {
+  min-width: 120px;
+  font-weight: bold;
+}

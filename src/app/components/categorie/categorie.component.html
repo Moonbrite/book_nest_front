@@ -1,0 +1,48 @@
+<div class="container mt-4">
+  <button class="btn btn-outline-primary"  routerLink="/categorie-form">
+    Crée une categorie
+  </button>
+  <h2 class="text-primary text-center mb-4">Liste des Catégories</h2>
+
+  <div *ngIf="paginatedCategories().length > 0; else noData">
+    <div class="table-responsive">
+      <table class="table table-hover table-bordered shadow-sm">
+        <thead class="table-primary">
+        <tr>
+          <th>ID</th>
+          <th>Nom</th>
+          <th>Description</th>
+          <th>Créé le</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let categorie of paginatedCategories()">
+          <td>{{ categorie.id }}</td>
+          <td>{{ categorie.name }}</td>
+          <td>{{ categorie.description }}</td>
+          <td>
+            <button class="btn btn-outline-dark btn-sm" (click)="goToEditPage(categorie.id)"> Modifier</button>
+          </td>
+        </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Pagination -->
+    <div class="d-flex justify-content-between align-items-center mt-3">
+      <button (click)="prevPage()" class="btn btn-outline-primary" [disabled]="currentPage() === 1">
+        ⬅ Précédent
+      </button>
+      <span class="fw-bold">Page {{ currentPage() }} / {{ (categories().length / itemsPerPage) | ceil }}</span>
+      <button (click)="nextPage()" class="btn btn-outline-primary" [disabled]="Number(currentPage() >= (categories().length / itemsPerPage)) | ceil">
+        Suivant ➡
+      </button>
+    </div>
+  </div>
+
+  <!-- Message si aucune catégorie -->
+  <ng-template #noData>
+    <div class="alert alert-info text-center mt-3">Aucune catégorie disponible.</div>
+  </ng-template>
+</div>

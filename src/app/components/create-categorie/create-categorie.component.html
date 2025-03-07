@@ -1,0 +1,26 @@
+<div class="card shadow-sm p-4">
+  <h2 class="text-primary">{{ isEditMode() ? 'Modifier la catégorie' : 'Ajouter une catégorie' }}</h2>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <!-- Champ Nom -->
+    <div class="mb-3">
+      <label for="name" class="form-label">Nom de la catégorie</label>
+      <input type="text" class="form-control" id="name" formControlName="name" [value]="form.controls['name'].value">
+      <div class="invalid-feedback">Le nom est requis.</div>
+    </div>
+
+    <!-- Champ Description -->
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea class="form-control" id="description" formControlName="description" [class.is-invalid]="form.controls['description'].invalid && form.controls['description']"></textarea>
+      <div class="invalid-feedback">La description doit contenir au moins 10 caractères.</div>
+    </div>
+
+    <!-- Boutons -->
+    <div class="d-flex justify-content-between">
+      <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
+        {{ isEditMode() ? 'Modifier' : 'Ajouter' }}
+      </button>
+    </div>
+  </form>
+</div>

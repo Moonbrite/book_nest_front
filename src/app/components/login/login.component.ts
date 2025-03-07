@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormsModule} from "@angular/forms";
 import {NgIf} from "@angular/common";
 import {UserService} from "../../services/user";
@@ -17,7 +17,7 @@ import {AuthResponse} from "../../models/auth-response";
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
-export class LoginComponent {
+export class LoginComponent  {
 
   constructor(private userService: UserService, private router: Router) {
 
